@@ -291,7 +291,9 @@ class ContextLauncher {
     }
 
     File file = File.createTempFile("livyConf", ".properties");
-    Files.setPosixFilePermissions(file.toPath(), EnumSet.of(OWNER_READ, OWNER_WRITE));
+    // Files.setPosixFilePermissions(file.toPath(), EnumSet.of(OWNER_READ, OWNER_WRITE));
+    file.setReadable(true);
+    file.setWritable(true);
     //file.deleteOnExit();
 
     Writer writer = new OutputStreamWriter(new FileOutputStream(file), UTF_8);
